@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace System.Collections {
@@ -22,6 +23,7 @@ namespace System.Collections {
         public PriorityQueue(Func<T, T, int> compareFunc, IEnumerable<T> collection) {
             Heap = new List<T>(collection);
             CompareFunction = compareFunc;
+            BuildHeap();
         }
 
 
@@ -46,10 +48,26 @@ namespace System.Collections {
             return Heap[0];
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void Clear() => Heap.Clear();
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public bool Contains(T item) => Heap.Contains(item);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void CopyTo(T[] array) => Heap.CopyTo(array);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void CopyTo(T[] array, int arrayIndex) => Heap.CopyTo(array, arrayIndex);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void CopyTo(int index, T[] array, int arrayIndex, int count) => Heap.CopyTo(index, array, arrayIndex, count);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public T[] ToArray() => Heap.ToArray();
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void TrimExcess() => Heap.TrimExcess();
 
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void PercDown(int index) {
             while (true) {
-                int child = 2 * index + 1;
+                int child = (index << 1) + 1;
 
                 if (child >= Heap.Count) break;
 
@@ -72,9 +90,10 @@ namespace System.Collections {
                 index = child;
             }
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void PercUp(int index) {
             while (index > 0) {
-                int parent = (index - 1) / 2;
+                int parent = (index - 1) >> 1;
 
                 if (CompareFunction(Heap[index], Heap[parent]) >= 0) {
                     // parent >= index
@@ -87,6 +106,13 @@ namespace System.Collections {
                 Heap[index] = temp;
 
                 index = parent;
+            }
+        }
+        private void BuildHeap() {
+            if (Empty) return;
+
+            for (int i = (Heap.Count - 2) >> 1; i >= 0; i--) {
+                PercDown(i);
             }
         }
 
@@ -115,11 +141,12 @@ namespace System.Collections {
 
 
         // Testing Bottom-Up
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal bool IsConsistent() {
             if (Empty) return true;
 
-            for (int i = (Heap.Count - 2) / 2; i >= 0; i--) {
-                int child = 2 * i + 1;
+            for (int i = (Heap.Count - 2) >> 1; i >= 0; i--) {
+                int child = (i << 1) + 1;
 
                 if (child < Heap.Count && CompareFunction(Heap[i], Heap[child]) > 0) return false;
                 if (child + 1 < Heap.Count && CompareFunction(Heap[i], Heap[child + 1]) > 0) return false;
@@ -167,6 +194,7 @@ namespace System.Collections.Generic {
         }
         public PriorityQueue(IEnumerable<T> collection) {
             Heap = new List<T>(collection);
+            BuildHeap();
         }
 
 
@@ -191,10 +219,25 @@ namespace System.Collections.Generic {
             return Heap[0];
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void Clear() => Heap.Clear();
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public bool Contains(T item) => Heap.Contains(item);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void CopyTo(T[] array) => Heap.CopyTo(array);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void CopyTo(T[] array, int arrayIndex) => Heap.CopyTo(array, arrayIndex);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void CopyTo(int index, T[] array, int arrayIndex, int count) => Heap.CopyTo(index, array, arrayIndex, count);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public T[] ToArray() => Heap.ToArray();
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void TrimExcess() => Heap.TrimExcess();
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void PercDown(int index) {
             while (true) {
-                int child = 2 * index + 1;
+                int child = (index << 1) + 1;
 
                 if (child >= Heap.Count) break;
 
@@ -217,9 +260,10 @@ namespace System.Collections.Generic {
                 index = child;
             }
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void PercUp(int index) {
             while (index > 0) {
-                int parent = (index - 1) / 2;
+                int parent = (index - 1) >> 1;
 
                 if (Heap[index].CompareTo(Heap[parent]) >= 0) {
                     // parent >= index
@@ -232,6 +276,13 @@ namespace System.Collections.Generic {
                 Heap[index] = temp;
 
                 index = parent;
+            }
+        }
+        private void BuildHeap() {
+            if (Empty) return;
+
+            for (int i = (Heap.Count - 2) >> 1; i >= 0; i--) {
+                PercDown(i);
             }
         }
 
@@ -258,11 +309,12 @@ namespace System.Collections.Generic {
 
 
         // Testing Bottom-Up
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal bool IsConsistent() {
             if (Empty) return true;
 
-            for (int i = (Heap.Count - 2) / 2; i >= 0; i--) {
-                int child = 2 * i + 1;
+            for (int i = (Heap.Count - 2) >> 1; i >= 0; i--) {
+                int child = (i << 1) + 1;
 
                 if (child < Heap.Count && Heap[i].CompareTo(Heap[child]) > 0) return false;
                 if (child + 1 < Heap.Count && Heap[i].CompareTo(Heap[child + 1]) > 0) return false;

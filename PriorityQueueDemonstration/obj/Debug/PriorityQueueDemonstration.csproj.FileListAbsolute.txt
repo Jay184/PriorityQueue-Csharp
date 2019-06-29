@@ -1,0 +1,10 @@
+C:\Files\Projects\PriorityQueue\PriorityQueueDemonstration\bin\Debug\PriorityQueueDemonstration.exe.config
+C:\Files\Projects\PriorityQueue\PriorityQueueDemonstration\bin\Debug\PriorityQueueDemonstration.exe
+C:\Files\Projects\PriorityQueue\PriorityQueueDemonstration\bin\Debug\PriorityQueueDemonstration.pdb
+C:\Files\Projects\PriorityQueue\PriorityQueueDemonstration\bin\Debug\PriorityQueue.dll
+C:\Files\Projects\PriorityQueue\PriorityQueueDemonstration\bin\Debug\PriorityQueue.pdb
+C:\Files\Projects\PriorityQueue\PriorityQueueDemonstration\obj\Debug\PriorityQueueDemonstration.csprojAssemblyReference.cache
+C:\Files\Projects\PriorityQueue\PriorityQueueDemonstration\obj\Debug\PriorityQueueDemonstration.csproj.CoreCompileInputs.cache
+C:\Files\Projects\PriorityQueue\PriorityQueueDemonstration\obj\Debug\PriorityQueueDemonstration.csproj.CopyComplete
+C:\Files\Projects\PriorityQueue\PriorityQueueDemonstration\obj\Debug\PriorityQueueDemonstration.exe
+C:\Files\Projects\PriorityQueue\PriorityQueueDemonstration\obj\Debug\PriorityQueueDemonstration.pdb

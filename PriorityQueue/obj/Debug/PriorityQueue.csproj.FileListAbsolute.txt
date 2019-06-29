@@ -1,0 +1,5 @@
+C:\Files\Projects\PriorityQueue\PriorityQueue\bin\Debug\PriorityQueue.dll
+C:\Files\Projects\PriorityQueue\PriorityQueue\bin\Debug\PriorityQueue.pdb
+C:\Files\Projects\PriorityQueue\PriorityQueue\obj\Debug\PriorityQueue.csproj.CoreCompileInputs.cache
+C:\Files\Projects\PriorityQueue\PriorityQueue\obj\Debug\PriorityQueue.dll
+C:\Files\Projects\PriorityQueue\PriorityQueue\obj\Debug\PriorityQueue.pdb

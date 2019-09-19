@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -178,7 +178,7 @@ namespace System.Collections {
     }
 }
 namespace System.Collections.Generic {
-    public class PriorityQueue<T> where T : IComparable { // -1 (<), 0 (==), +1 (>)
+    public class PriorityQueue<T> where T : IComparable<T> { // -1 (<), 0 (==), +1 (>)
         public int Count => Heap.Count;
         public bool Empty => Heap.Count == 0;
 

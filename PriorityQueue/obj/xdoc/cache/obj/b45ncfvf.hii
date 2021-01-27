@@ -1,0 +1,10 @@
+id: PriorityQueue
+language: CSharp
+name:
+  Default: PriorityQueue
+qualifiedName:
+  Default: PriorityQueue
+type: Assembly
+modifiers: {}
+items: []
+references: {}

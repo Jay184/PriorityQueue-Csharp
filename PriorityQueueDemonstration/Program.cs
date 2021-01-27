@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 
 namespace PriorityQueueDemonstration {
-    class Program {
-        static void Main(string[] args) => BasicUsage();
-
-
-        static void BasicUsage() {
+    public class Program {
+        public static void Main(string[] args) {
             PriorityQueue<int> pq = new PriorityQueue<int>();
             int N = 20;
 
@@ -29,7 +26,14 @@ namespace PriorityQueueDemonstration {
                 Console.WriteLine($"{ min }\t<=\tPQ [{ pq.ToString() }]");
             }
 
-            Console.ReadKey();
+        }
+    }
+
+    public class Test : IComparable<Test> {
+        public int Value { get; set; }
+
+        public int CompareTo(Test other) {
+            return Value.CompareTo(other);
         }
     }
 }

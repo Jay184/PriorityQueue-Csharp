@@ -3,8 +3,18 @@ using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace System.Collections {
+    /// <summary>
+    /// MinHeap implementation of a priorityqueue.
+    /// </summary>
+    /// <typeparam name="T">Type of the container.</typeparam>
     public class PriorityQueue<T> {
+        /// <summary>
+        /// Returns the amount of items in the queue.
+        /// </summary>
         public int Count => Heap.Count;
+        /// <summary>
+        /// Returns true if the queue is empty.
+        /// </summary>
         public bool Empty => Heap.Count == 0;
 
         private List<T> Heap { get; set; }
@@ -12,14 +22,28 @@ namespace System.Collections {
 
 
 
+        /// <summary>
+        /// Creates a new instance of type <see cref="PriorityQueue{T}"/>.
+        /// </summary>
+        /// <param name="compareFunc">Function to compare two values. The Function returns -1 for lower than, 0 for equality and 1 for greater than.</param>
         public PriorityQueue(Func<T, T, int> compareFunc) {
             Heap = new List<T>();
             CompareFunction = compareFunc;
         }
+        /// <summary>
+        /// Creates a new instance of type <see cref="PriorityQueue{T}"/>.
+        /// </summary>
+        /// <param name="compareFunc">Function to compare two values. The Function returns -1 for lower than, 0 for equality and 1 for greater than.</param>
+        /// <param name="capacity">Initial capacity.</param>
         public PriorityQueue(Func<T, T, int> compareFunc, int capacity) {
             Heap = new List<T>(capacity);
             CompareFunction = compareFunc;
         }
+        /// <summary>
+        /// Creates a new instance of type <see cref="PriorityQueue{T}"/>.
+        /// </summary>
+        /// <param name="compareFunc">Function to compare two values. The Function returns -1 for lower than, 0 for equality and 1 for greater than.</param>
+        /// <param name="collection">Initial entries in the queue.</param>
         public PriorityQueue(Func<T, T, int> compareFunc, IEnumerable<T> collection) {
             Heap = new List<T>(collection);
             CompareFunction = compareFunc;
@@ -28,10 +52,18 @@ namespace System.Collections {
 
 
 
+        /// <summary>
+        /// Adds an item to the queue.
+        /// </summary>
+        /// <param name="item">Object to add to the queue.</param>
         public void Enqueue(T item) {
             Heap.Add(item);
             PercUp(Heap.Count - 1);
         }
+        /// <summary>
+        /// Removes the first item in the queue and returns it.
+        /// </summary>
+        /// <returns>Popped entry of type <see cref="T"/></returns>
         public T Dequeue() {
             if (Empty) throw new OverflowException("Priority Queue is empty");
 
@@ -42,6 +74,10 @@ namespace System.Collections {
 
             return front;
         }
+        /// <summary>
+        /// Returns the first item in the queue.
+        /// </summary>
+        /// <returns>Entry of type <see cref="T"/></returns>
         public T Peek() {
             if (Empty) throw new OverflowException("Priority Queue is empty");
 
@@ -178,20 +214,41 @@ namespace System.Collections {
     }
 }
 namespace System.Collections.Generic {
-    public class PriorityQueue<T> where T : IComparable { // -1 (<), 0 (==), +1 (>)
+    /// <summary>
+    /// MinHeap implementation of a priorityqueue.
+    /// </summary>
+    /// <typeparam name="T">Type of the container. Needs to implement <see cref="IComparable"/></typeparam>
+    public class PriorityQueue<T> where T : IComparable<T> { // -1 (<), 0 (==), +1 (>)
+        /// <summary>
+        /// Returns the amount of items in the Queue.
+        /// </summary>
         public int Count => Heap.Count;
+        /// <summary>
+        /// Returns true if the Queue is empty.
+        /// </summary>
         public bool Empty => Heap.Count == 0;
 
         private List<T> Heap { get; set; }
 
 
 
+        /// <summary>
+        /// Creates a new instance of type <see cref="PriorityQueue{T}"/>.
+        /// </summary>
         public PriorityQueue() {
             Heap = new List<T>();
         }
+        /// <summary>
+        /// Creates a new instance of type <see cref="PriorityQueue{T}"/>.
+        /// </summary>
+        /// <param name="capacity">Initial capacity.</param>
         public PriorityQueue(int capacity) {
             Heap = new List<T>(capacity);
         }
+        /// <summary>
+        /// Creates a new instance of type <see cref="PriorityQueue{T}"/>.
+        /// </summary>
+        /// <param name="collection">Initial entries in the queue.</param>
         public PriorityQueue(IEnumerable<T> collection) {
             Heap = new List<T>(collection);
             BuildHeap();
@@ -199,10 +256,18 @@ namespace System.Collections.Generic {
 
 
 
+        /// <summary>
+        /// Adds an item to the queue.
+        /// </summary>
+        /// <param name="item">Object to add to the queue.</param>
         public void Enqueue(T item) {
             Heap.Add(item);
             PercUp(Heap.Count - 1);
         }
+        /// <summary>
+        /// Removes the first item in the queue and returns it.
+        /// </summary>
+        /// <returns>Popped entry of type <see cref="T"/></returns>
         public T Dequeue() {
             if (Empty) throw new OverflowException("Priority Queue is empty");
 
@@ -213,6 +278,10 @@ namespace System.Collections.Generic {
 
             return front;
         }
+        /// <summary>
+        /// Returns the first item in the queue.
+        /// </summary>
+        /// <returns>Entry of type <see cref="T"/></returns>
         public T Peek() {
             if (Empty) throw new OverflowException("Priority Queue is empty");
 

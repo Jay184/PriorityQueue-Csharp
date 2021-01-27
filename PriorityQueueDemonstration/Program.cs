@@ -14,7 +14,7 @@ namespace PriorityQueueDemonstration {
                 else num = N - i;
 
                 pq.Enqueue(num);
-                Console.WriteLine($"{ num }\t=>\tPQ [{ pq.ToString() }]");
+                Console.WriteLine($"{ num }\t=>\tPQ [{ pq }]");
             }
 
 
@@ -23,7 +23,7 @@ namespace PriorityQueueDemonstration {
 
             while (!pq.Empty) {
                 int min = pq.Dequeue();
-                Console.WriteLine($"{ min }\t<=\tPQ [{ pq.ToString() }]");
+                Console.WriteLine($"{ min }\t<=\tPQ [{ pq }]");
             }
 
         }
